@@ -1,0 +1,4 @@
+1. The following error is occurred when fluentd is started.
+   $ sudo /etc/init.d/td-agent restart
+
+   ... error="out_file: '.....log' is not writable"

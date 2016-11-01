@@ -1,0 +1,31 @@
+1. Install td-agent 
+2. Configure td-agent
+   $ sudo /usr/sbin/td-agent-ui start
+   - log in with admin/changeme
+   - Edit td-agent.conf
+   - Change owner of the output folder to td-agent
+     $ sudo chown td-agent:td-agent /home/shealth/fluentd/bootweb1.log
+   
+<source>
+  type tail
+  tag test.api
+  path /home/shealth/log/bootweb1-log.log
+  pos_file /home/shealth/fluentd/bootweb1.pos
+  format none
+</source>
+
+<match test.api>
+  type file
+  path /home/shealth/fluentd/fluentd
+  time_slice_format %Y%m%d
+  time_slice_wait 1m
+  time_format %Y%m%dT%H%M%S%z
+  utc 
+</match>
+
+<match test.*>
+  type stdout
+</match>
+
+3. Start td-agent
+   $ sudo /etc/init.d/td-agent restart
