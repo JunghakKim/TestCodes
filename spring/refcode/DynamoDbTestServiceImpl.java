@@ -1,4 +1,4 @@
-package com.samsung.shealth.misc.service;
+package com.test.dynamodb.misc.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,10 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.samsung.shealth.common.Constants;
-import com.samsung.shealth.common.base.ShealthServiceResource;
-import com.samsung.shealth.exception.ClientRequestBindingException;
-import com.samsung.shealth.misc.vo.DynamoDbResponseVO;
+import com.test.dynamodb.misc.vo.DynamoDbResponseVO;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
@@ -45,21 +42,13 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 
 @Controller
-public class DynamoDbTestServiceImpl extends ShealthServiceResource {
+public class DynamoDbTestServiceImpl {
 	
 	/** The filter properties for events. */
 	private static String[]	filterPropertiesForDynamoDb = {};
 	
-    @Value("${shealth.api.aws.key}")
-    private String awsAccessKey;
+    private String s3Protocol = "HTTP";
     
-    @Value("${shealth.api.aws.secret}")
-    private String awsSecretKey;
-    
-    @Value("${shealth.api.aws.s3.protocol}")
-    private String s3Protocol;
-    
-    @Value("${shealth.api.aws.s3.proxy}")
     private String s3UseProxy;
     
     static String tableName = "MusicCollection";
@@ -67,7 +56,7 @@ public class DynamoDbTestServiceImpl extends ShealthServiceResource {
 	//@Autowired
 	//private AmazonDynamoDBClient amazonDynamoDBClient;
     
-    // References
+    // Reference
     // BatchGetItem https://github.com/awslabs/aws-dynamodb-examples/blob/master/src/main/java/com/amazonaws/codesamples/lowlevel/LowLevelBatchGet.java
     // Query    
 
