@@ -95,7 +95,7 @@ public class DynamoDbTestServiceImpl {
 		
 		validateMandatoryHeaders(mcc, model, appVersion, osVersion);
 		
-		AWSCredentials awsCredentials = new BasicAWSCredentials("AKIAJDXV4ZCIYRKGTH2A", "+fb3n4RRY7xv5bV1e6ItLgzrCUQGyGnNxtgFfcDB");
+		AWSCredentials awsCredentials = new BasicAWSCredentials("id", "security");
 		
 		ClientConfiguration clientConfiguration = new ClientConfiguration();
 		if(Boolean.parseBoolean(s3UseProxy)) {
