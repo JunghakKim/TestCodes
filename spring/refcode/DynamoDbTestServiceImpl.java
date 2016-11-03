@@ -99,13 +99,13 @@ public class DynamoDbTestServiceImpl {
 		
 		ClientConfiguration clientConfiguration = new ClientConfiguration();
 		if(Boolean.parseBoolean(s3UseProxy)) {
-        	clientConfiguration.setProxyHost("168.219.61.252");
-            clientConfiguration.setProxyPort(8080);
+        	clientConfiguration.setProxyHost("proxy_ip");
+            clientConfiguration.setProxyPort(port);
         }
         
         clientConfiguration.setProtocol(Protocol.valueOf(s3Protocol));
 		AmazonDynamoDBClient amazonDynamoDBClient = new AmazonDynamoDBClient(awsCredentials, clientConfiguration);
-		amazonDynamoDBClient.withEndpoint("http://10.251.30.102:8000"); 
+		amazonDynamoDBClient.withEndpoint("http://ip:port"); 
 		
 		DynamoDbResponseVO response = new DynamoDbResponseVO();
 		
